@@ -1,0 +1,31 @@
+{
+  "name": "medellin-api",
+  "version": "0.0.1",
+  "description": "REST api para el proyecto de cinta negra",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Masavi/medellin-api.git"
+  },
+  "keywords": [
+    "learning",
+    "devf",
+    "backend",
+    "rest",
+    "express"
+  ],
+  "author": "Maui Saavedra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Masavi/medellin-api/issues"
+  },
+  "homepage": "https://github.com/Masavi/medellin-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
