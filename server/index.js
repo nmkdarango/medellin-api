@@ -1,6 +1,7 @@
 const express = require('express');
 const server = express();
 const bodyParser = require('body-parser');
+const { getRequestDate } = require('../utils');
 const PORT = process.env.PORT || 3000;
 
 // parse application/x-www-form-urlencoded
@@ -8,6 +9,9 @@ server.use(bodyParser.urlencoded({ extended: false }));
  
 // parse application/json
 server.use(bodyParser.json());
+
+// show the time the request was made
+server.use(getRequestDate);
 
 // Models
 const { Users } = require('../models');
