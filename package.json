@@ -7,7 +7,20 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint 'src/**/*.js' --fix"
+    "lint": "eslint 'src/**/*.js' --fix",
+    "format": "prettier-eslint 'server/**/*.{js,json}' --write"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",
@@ -36,6 +49,9 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-promise": "^4.2.1"
+    "eslint-plugin-promise": "^4.2.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "prettier-eslint-cli": "^5.0.0"
   }
 }
