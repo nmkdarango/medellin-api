@@ -1,12 +1,14 @@
 const express = require('express');
+
 const server = express();
 const bodyParser = require('body-parser');
 const { getRequestDate } = require('../utils');
+
 const PORT = process.env.PORT || 3000;
 
 // parse application/x-www-form-urlencoded
 server.use(bodyParser.urlencoded({ extended: false }));
- 
+
 // parse application/json
 server.use(bodyParser.json());
 
@@ -22,9 +24,11 @@ server.get('/', (req, res) => res.send('Hello World!'));
 // CRUD Users
 server.post('/users', (req, res) => {
   const {
+    // eslint-disable-next-line camelcase
     first_name,
+    // eslint-disable-next-line camelcase
     last_name,
-    email
+    email,
   } = req.body;
 
   const document = {
@@ -41,7 +45,7 @@ server.post('/users', (req, res) => {
 server.get('/users', (req, res) => {
   Users.find()
     .then((users) => res.status(200).json({ message: 'Users obtained!', data: users }))
-    .catch((err) => res.status(404).json({ message: "Error getting users", data: err }));
+    .catch((err) => res.status(404).json({ message: 'Error getting users', data: err }));
 });
 
 server.get('/users/:id', (req, res) => {
@@ -49,7 +53,7 @@ server.get('/users/:id', (req, res) => {
 
   Users.findById(id)
     .then((user) => res.status(200).json({ message: 'User obtained!', data: user }))
-    .catch((err) => res.status(404).json({ message: "Error getting user", data: err }));
+    .catch((err) => res.status(404).json({ message: 'Error getting user', data: err }));
 });
 
 server.patch('/users/:id', (req, res) => {
@@ -65,10 +69,10 @@ server.delete('/users/:id', (req, res) => {
 
   Users.findByIdAndUpdate(id, { is_active: false }, { useFindAndModify: false })
     .then(() => res.status(204).json())
-    .catch((err) => res.status(404).json({ message: "Error deleting user", data: err }));
+    .catch((err) => res.status(404).json({ message: 'Error deleting user', data: err }));
 });
 
-module.exports = { 
+module.exports = {
   server,
-  PORT
-}; 
+  PORT,
+};

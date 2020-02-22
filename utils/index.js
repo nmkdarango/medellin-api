@@ -12,7 +12,8 @@ module.exports = {
 
     const dateString = `${day}/${month}/${year} - ${hour}:${minutes}:${seconds}`;
 
+    // eslint-disable-next-line no-console
     console.log(`Fecha de petición: ${dateString}`);
     next();
   },
-}
+};
