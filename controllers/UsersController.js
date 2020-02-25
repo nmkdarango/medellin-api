@@ -4,15 +4,15 @@ module.exports = {
   createUser: (req, res) => {
     const {
       // eslint-disable-next-line camelcase
-      first_name,
+      firstname,
       // eslint-disable-next-line camelcase
-      last_name,
+      lastname,
       email,
     } = req.body;
 
     const document = {
-      first_name,
-      last_name,
+      firstname,
+      lastname,
       email,
     };
 
