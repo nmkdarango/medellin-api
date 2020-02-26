@@ -8,12 +8,14 @@ module.exports = {
       // eslint-disable-next-line camelcase
       lastname,
       email,
+      password,
     } = req.body;
 
     const document = {
       firstname,
       lastname,
       email,
+      password
     };
 
     Users.create(document)
