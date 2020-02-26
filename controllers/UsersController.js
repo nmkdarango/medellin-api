@@ -1,4 +1,5 @@
 const { UsersResolver } = require('../resolvers');
+const { generateToken } = require('../utils');
 
 module.exports = {
   createUser: (req, res) => {
@@ -30,5 +31,22 @@ module.exports = {
     UsersResolver.findByIdAndDelete(id)
       .then(() => res.status(204).json())
       .catch((err) => res.status(404).json({ message: 'Error deleting user', data: err }));
+  },
+  signupUser: (req, res) => {
+    UsersResolver.create(req.body)
+      .then((user) => res.status(201).json({ message: 'Signup successful!', data: user }))
+      .catch((err) => res.status(400).json({ message: 'Error creating user', data: err }));
+  },
+  loginUser: async (req, res) => {
+    const user = await UsersResolver.findByEmail(req.body.email);
+    if (user) {
+      const isMatch = await UsersResolver.validatePassword(user, req.body.password);
+      if (isMatch) {
+        const token = generateToken(user);
+        return res.status(200).json({ message: 'Login successful!', token });
+      }
+      return res.status(400).send({ message: 'Wrong credentials' });
+    }
+    return res.status(400).send({ message: 'User not found' });
   },
 };
