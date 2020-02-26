@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/Masavi/medellin-api#readme",
   "dependencies": {
+    "bcrypt": "^4.0.0",
     "body-parser": "^1.19.0",
     "celebrate": "^11.0.1",
     "dotenv": "^8.2.0",
