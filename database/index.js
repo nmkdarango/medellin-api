@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(
-  process.env.MONGO_URI,
-  {
+mongoose
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  },
-)
+  })
   // eslint-disable-next-line no-console
-  .then(() => console.log('✅ Conexión exitosa con Atlas'))
+  .then(() => console.log('-- Database connected --'))
   // eslint-disable-next-line no-console
-  .catch(() => console.log('🚫 Error al conectar con Atlas'));
+  .catch((err) => console.log('Database ERROR: ', err));
