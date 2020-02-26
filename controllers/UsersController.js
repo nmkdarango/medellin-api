@@ -15,7 +15,7 @@ module.exports = {
       firstname,
       lastname,
       email,
-      password
+      password,
     };
 
     Users.create(document)
